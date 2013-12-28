@@ -1,4 +1,4 @@
-maven-base
+oss-parent
 ==========
 
-Base configuration for Maven projects
+Base configuration for my Maven projects.
