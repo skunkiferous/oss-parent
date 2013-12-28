@@ -12,7 +12,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.blockwithme</groupId>
 	<artifactId>oss-parent</artifactId>
-	<version>0.0.3</version>
+	<version>0.0.4</version>
 	<packaging>pom</packaging>
 	<name>oss-parent</name>
 	<description>Base configuration for my Maven projects.</description>
@@ -360,6 +360,8 @@
 			</plugins>
 		</pluginManagement>
 
+	<!-- If I use this, then for some strange reason, the jars of the children projects are not "installed" anymore -->
+<!--
         <plugins>
                 <plugin>
                         <groupId>org.apache.maven.plugins</groupId>
@@ -378,6 +380,8 @@
                         <artifactId>maven-enforcer-plugin</artifactId>
                 </plugin>
         </plugins>
+-->
+
 	</build>
 
 	<dependencyManagement>
