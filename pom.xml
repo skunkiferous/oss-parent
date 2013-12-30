@@ -12,7 +12,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.blockwithme</groupId>
 	<artifactId>oss-parent</artifactId>
-	<version>0.0.4</version>
+	<version>0.0.5</version>
 	<packaging>pom</packaging>
 	<name>oss-parent</name>
 	<description>Base configuration for my Maven projects.</description>
@@ -111,10 +111,10 @@
 		<!-- All the versions of the dependencies -->
 		<FuncGenerated012-dependency-version>1.2.0</FuncGenerated012-dependency-version>
 		<guava-dependency-version>15.0</guava-dependency-version>
-		<junit-dependency-version>4.10</junit-dependency-version>
+		<junit-dependency-version>4.11.0</junit-dependency-version>
 		<org.eclipse.xtend.core-dependency-version>${xtend-maven-plugin-version}</org.eclipse.xtend.core-dependency-version>
 		<org.eclipse.xtend.lib-dependency-version>${xtend-maven-plugin-version}</org.eclipse.xtend.lib-dependency-version>
-		<slf4j-dependency-version>1.6</slf4j-dependency-version>
+		<slf4j-dependency-version>1.7.5</slf4j-dependency-version>
 	</properties>
 
 	<build>
