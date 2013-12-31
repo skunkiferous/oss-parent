@@ -12,7 +12,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.blockwithme</groupId>
 	<artifactId>oss-parent</artifactId>
-	<version>0.0.5</version>
+	<version>0.0.6</version>
 	<packaging>pom</packaging>
 	<name>oss-parent</name>
 	<description>Base configuration for my Maven projects.</description>
@@ -165,6 +165,7 @@
 							</fileset>
 						</filesets>
 					</configuration>
+<!--
 					<executions>
 						<execution>
 							<id>auto-clean</id>
@@ -174,6 +175,7 @@
 							</goals>
 						</execution>
 					</executions>
+-->
 				</plugin>
 				<!-- To "execute some task" (generate sources in some projects) -->
 				<plugin>
