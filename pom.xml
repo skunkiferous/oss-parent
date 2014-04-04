@@ -12,7 +12,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.blockwithme</groupId>
 	<artifactId>oss-parent</artifactId>
-	<version>0.0.6</version>
+	<version>0.0.7</version>
 	<packaging>pom</packaging>
 	<name>oss-parent</name>
 	<description>Base configuration for my Maven projects.</description>
@@ -90,14 +90,15 @@
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-		<java-version>1.6</java-version>
+		<java-version>1.7</java-version>
+		<maven-version>3.0.4</maven-version>
 
 		<!-- All the versions of the plugins -->
 		<exec-maven-plugin-version>1.2.1</exec-maven-plugin-version>
 		<lifecycle-mapping-version>1.0.0</lifecycle-mapping-version>
 		<maven-bundle-plugin-version>2.4.0</maven-bundle-plugin-version>
 		<maven-clean-plugin-version>2.5</maven-clean-plugin-version>
-		<maven-compiler-plugin-version>3.0</maven-compiler-plugin-version>
+		<maven-compiler-plugin-version>3.1</maven-compiler-plugin-version>
 		<maven-deploy-plugin-version>2.7</maven-deploy-plugin-version>
 		<maven-enforcer-plugin-version>1.2</maven-enforcer-plugin-version>
 		<maven-install-plugin-version>2.4</maven-install-plugin-version>
@@ -107,6 +108,11 @@
 		<maven-source-plugin-version>2.2.1</maven-source-plugin-version>
 		<plexus-compiler-eclipse-plugin-version>2.3</plexus-compiler-eclipse-plugin-version>
 		<xtend-maven-plugin-version>2.5.0</xtend-maven-plugin-version>
+		<build-helper-maven-plugin-version>1.8</build-helper-maven-plugin-version>
+		<jetty-maven-plugin-version>9.1.2.v20140210</jetty-maven-plugin-version>
+		<tomcat7-maven-plugin-version>2.2</tomcat7-maven-plugin-version>
+		<maven-war-plugin-version>2.4</maven-war-plugin-version>
+		<gwt-maven-plugin-version>2.6.0</gwt-maven-plugin-version>
 
 		<!-- All the versions of the dependencies -->
 		<FuncGenerated012-dependency-version>1.2.0</FuncGenerated012-dependency-version>
@@ -115,6 +121,9 @@
 		<org.eclipse.xtend.core-dependency-version>${xtend-maven-plugin-version}</org.eclipse.xtend.core-dependency-version>
 		<org.eclipse.xtend.lib-dependency-version>${xtend-maven-plugin-version}</org.eclipse.xtend.lib-dependency-version>
 		<slf4j-dependency-version>1.7.5</slf4j-dependency-version>
+		<gwt-dependency-version>2.6.0</gwt-dependency-version>
+		<servlet-api-dependency-version>3.0.1</servlet-api-dependency-version>
+		<groovy-all-dependency-version>2.1.5</groovy-all-dependency-version>
 	</properties>
 
 	<build>
@@ -225,6 +234,7 @@
 					<executions>
 						<execution>
 							<id>attach-sources</id>
+							<!-- GWT archetype uses: <phase>package</phase><goal>jar-no-fork</goal> -->
 							<phase>post-integration-test</phase>
 							<goals>
 								<goal>jar</goal>
@@ -300,7 +310,7 @@
                                         <configuration>
                                                 <rules>
                                                         <requireMavenVersion>
-                                                                <version>3.0.4</version>
+                                                                <version>${maven-version}</version>
                                                         </requireMavenVersion>
                                                         <requireUpperBoundDeps/>
                                                         <requirePluginVersions/>
@@ -309,6 +319,59 @@
                                 </execution>
                         </executions>
                 </plugin>
+                <!-- Build Helper Maven Plugin -->
+		        <plugin>
+		          <groupId>org.codehaus.mojo</groupId>
+		          <artifactId>build-helper-maven-plugin</artifactId>
+		          <version>${build-helper-maven-plugin-version}</version>
+		        </plugin>
+		        <!-- Jetty Maven Plugin -->
+		        <plugin>
+		          <groupId>org.eclipse.jetty</groupId>
+		          <artifactId>jetty-maven-plugin</artifactId>
+		          <version>${jetty-maven-plugin-version}</version>
+		        </plugin>
+		        <!-- Tomcat7 Maven Plugin -->
+		        <plugin>
+		          <groupId>org.apache.tomcat.maven</groupId>
+		          <artifactId>tomcat7-maven-plugin</artifactId>
+		          <version>${tomcat7-maven-plugin-version}</version>
+		        </plugin>
+		        <!-- Create the web application archive -->
+		        <plugin>
+		          <groupId>org.apache.maven.plugins</groupId>
+		          <artifactId>maven-war-plugin</artifactId>
+		          <version>${maven-war-plugin-version}</version>
+		          <configuration>
+		            <archive>
+		              <addMavenDescriptor>false</addMavenDescriptor>
+		            </archive>
+		          </configuration>
+		        </plugin>
+		        <!-- GWT compiler execution -->
+		        <plugin>
+		          <groupId>org.codehaus.mojo</groupId>
+		          <artifactId>gwt-maven-plugin</artifactId>
+		          <version>${gwt-maven-plugin-version}</version>
+		          <configuration>
+		            <deploy>${project.build.directory}/gwtc/extra</deploy>
+		            <extra>${project.build.directory}/gwtc/extra</extra>
+		            <gen>${project.build.directory}/gwtc/gen</gen>
+		            <!-- There's an issue on Mac: see http://code.google.com/p/google-web-toolkit/issues/detail?id=7474
+		            <workDir>${project.build.directory}/gwtc/work</workDir>
+		            <codeServerWorkDir>${project.build.directory}/gwtc/superDevMode</codeServerWorkDir>
+		            -->
+		          </configuration>
+		          <executions>
+		            <execution>
+		              <id>gwt-compile</id>
+		              <phase>prepare-package</phase>
+		              <goals>
+		                <goal>compile</goal>
+		              </goals>
+		            </execution>
+		          </executions>
+		        </plugin>
 				<!--This plugin's configuration is used to store Eclipse m2e settings only. It has no influence on the Maven build itself.-->
 				<plugin>
 					<groupId>org.eclipse.m2e</groupId>
@@ -430,6 +493,32 @@
 				<groupId>com.google.guava</groupId>
 				<artifactId>guava</artifactId>
 				<version>${guava-dependency-version}</version>
+			</dependency>
+			<!-- GWT-user -->
+			<dependency>
+		        <groupId>com.google.gwt</groupId>
+		        <artifactId>gwt-user</artifactId>
+		        <version>${gwt-dependency-version}</version>
+		        <scope>provided</scope>
+	        </dependency>
+			<!-- GWT-servlet -->
+	        <dependency>
+		        <groupId>com.google.gwt</groupId>
+		        <artifactId>gwt-servlet</artifactId>
+		        <version>${gwt-dependency-version}</version>
+	        </dependency>
+			<!-- Servlet-API -->
+	        <dependency>
+		        <groupId>javax.servlet</groupId>
+		        <artifactId>javax.servlet-api</artifactId>
+		        <version>${servlet-api-dependency-version}</version>
+		        <scope>provided</scope>
+	        </dependency>
+	        <!-- Groovy -->
+			<dependency>
+			    <groupId>org.codehaus.groovy</groupId>
+			    <artifactId>groovy-all</artifactId>
+			    <version>${groovy-all-dependency-version}</version>
 			</dependency>
 		</dependencies>
 	</dependencyManagement>
