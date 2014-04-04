@@ -12,7 +12,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.blockwithme</groupId>
 	<artifactId>oss-parent</artifactId>
-	<version>0.0.7</version>
+	<version>0.0.8</version>
 	<packaging>pom</packaging>
 	<name>oss-parent</name>
 	<description>Base configuration for my Maven projects.</description>
@@ -122,6 +122,7 @@
 		<org.eclipse.xtend.lib-dependency-version>${xtend-maven-plugin-version}</org.eclipse.xtend.lib-dependency-version>
 		<slf4j-dependency-version>1.7.5</slf4j-dependency-version>
 		<gwt-dependency-version>2.6.0</gwt-dependency-version>
+		<gdx-dependency-version>0.9.9</gdx-dependency-version>
 		<servlet-api-dependency-version>3.0.1</servlet-api-dependency-version>
 		<groovy-all-dependency-version>2.1.5</groovy-all-dependency-version>
 	</properties>
@@ -501,11 +502,46 @@
 		        <version>${gwt-dependency-version}</version>
 		        <scope>provided</scope>
 	        </dependency>
+			<dependency>
+		        <groupId>com.google.gwt</groupId>
+		        <artifactId>gwt-user</artifactId>
+		        <version>${gwt-dependency-version}</version>
+		        <classifier>sources</classifier>
+		        <scope>provided</scope>
+	        </dependency>
 			<!-- GWT-servlet -->
 	        <dependency>
 		        <groupId>com.google.gwt</groupId>
 		        <artifactId>gwt-servlet</artifactId>
 		        <version>${gwt-dependency-version}</version>
+	        </dependency>
+			<!-- libGDX-gdx -->
+			<dependency>
+		        <groupId>com.badlogicgames.gdx</groupId>
+		        <artifactId>gdx</artifactId>
+		        <version>${gdx-dependency-version}</version>
+		        <scope>provided</scope>
+	        </dependency>
+			<dependency>
+		        <groupId>com.badlogicgames.gdx</groupId>
+		        <artifactId>gdx</artifactId>
+		        <version>${gdx-dependency-version}</version>
+		        <classifier>sources</classifier>
+		        <scope>provided</scope>
+	        </dependency>
+			<!-- gdx-backend-gwt -->
+			<dependency>
+		        <groupId>com.badlogicgames.gdx</groupId>
+		        <artifactId>gdx-backend-gwt</artifactId>
+		        <version>${gdx-dependency-version}</version>
+		        <scope>provided</scope>
+	        </dependency>
+			<dependency>
+		        <groupId>com.badlogicgames.gdx</groupId>
+		        <artifactId>gdx-backend-gwt</artifactId>
+		        <version>${gdx-dependency-version}</version>
+		        <classifier>sources</classifier>
+		        <scope>provided</scope>
 	        </dependency>
 			<!-- Servlet-API -->
 	        <dependency>
