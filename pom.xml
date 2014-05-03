@@ -12,7 +12,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.blockwithme</groupId>
 	<artifactId>oss-parent</artifactId>
-	<version>0.0.8</version>
+	<version>0.1.0</version>
 	<packaging>pom</packaging>
 	<name>oss-parent</name>
 	<description>Base configuration for my Maven projects.</description>
@@ -113,6 +113,7 @@
 		<tomcat7-maven-plugin-version>2.2</tomcat7-maven-plugin-version>
 		<maven-war-plugin-version>2.4</maven-war-plugin-version>
 		<gwt-maven-plugin-version>2.6.0</gwt-maven-plugin-version>
+		<maven-surefire-plugin-version>2.17</maven-surefire-plugin-version>
 
 		<!-- All the versions of the dependencies -->
 		<FuncGenerated012-dependency-version>1.2.0</FuncGenerated012-dependency-version>
@@ -122,7 +123,10 @@
 		<org.eclipse.xtend.lib-dependency-version>${xtend-maven-plugin-version}</org.eclipse.xtend.lib-dependency-version>
 		<slf4j-dependency-version>1.7.5</slf4j-dependency-version>
 		<gwt-dependency-version>2.6.0</gwt-dependency-version>
-		<gdx-dependency-version>0.9.9</gdx-dependency-version>
+		<gdx-dependency-version>1.0.0</gdx-dependency-version>
+		<guice-dependency-version>3.0</guice-dependency-version>
+		<gin-dependency-version>2.1.2</gin-dependency-version>
+		<gwtexporter-dependency-version>2.5.0-SNAPSHOT</gwtexporter-dependency-version>
 		<servlet-api-dependency-version>3.0.1</servlet-api-dependency-version>
 		<groovy-all-dependency-version>2.1.5</groovy-all-dependency-version>
 	</properties>
@@ -276,6 +280,12 @@
 					<artifactId>maven-deploy-plugin</artifactId>
 					<version>${maven-deploy-plugin-version}</version>
 				</plugin>
+				<!-- The surefire (test) plugin -->
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-surefire-plugin</artifactId>
+					<version>${maven-surefire-plugin-version}</version>
+				</plugin>
 				<!-- To compile the Xtend files into Java code files -->
 				<plugin>
 					<groupId>org.eclipse.xtend</groupId>
@@ -298,81 +308,81 @@
 					</executions>
 				</plugin>
 				<!-- The enforcer plugin -->
-                <plugin>
-                        <groupId>org.apache.maven.plugins</groupId>
-                        <artifactId>maven-enforcer-plugin</artifactId>
-                        <version>${maven-enforcer-plugin-version}</version>
-                        <executions>
-                                <execution>
-                                        <id>enforce-best-practices</id>
-                                        <goals>
-                                                <goal>enforce</goal>
-                                        </goals>
-                                        <configuration>
-                                                <rules>
-                                                        <requireMavenVersion>
-                                                                <version>${maven-version}</version>
-                                                        </requireMavenVersion>
-                                                        <requireUpperBoundDeps/>
-                                                        <requirePluginVersions/>
-                                                </rules>
-                                        </configuration>
-                                </execution>
-                        </executions>
-                </plugin>
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-enforcer-plugin</artifactId>
+					<version>${maven-enforcer-plugin-version}</version>
+					<executions>
+						<execution>
+							<id>enforce-best-practices</id>
+							<goals>
+								<goal>enforce</goal>
+							</goals>
+							<configuration>
+								<rules>
+									<requireMavenVersion>
+										<version>${maven-version}</version>
+									</requireMavenVersion>
+									<requireUpperBoundDeps />
+									<requirePluginVersions />
+								</rules>
+							</configuration>
+						</execution>
+					</executions>
+				</plugin>
                 <!-- Build Helper Maven Plugin -->
-		        <plugin>
-		          <groupId>org.codehaus.mojo</groupId>
-		          <artifactId>build-helper-maven-plugin</artifactId>
-		          <version>${build-helper-maven-plugin-version}</version>
-		        </plugin>
+				<plugin>
+					<groupId>org.codehaus.mojo</groupId>
+					<artifactId>build-helper-maven-plugin</artifactId>
+					<version>${build-helper-maven-plugin-version}</version>
+				</plugin>
 		        <!-- Jetty Maven Plugin -->
-		        <plugin>
-		          <groupId>org.eclipse.jetty</groupId>
-		          <artifactId>jetty-maven-plugin</artifactId>
-		          <version>${jetty-maven-plugin-version}</version>
-		        </plugin>
+				<plugin>
+					<groupId>org.eclipse.jetty</groupId>
+					<artifactId>jetty-maven-plugin</artifactId>
+					<version>${jetty-maven-plugin-version}</version>
+				</plugin>
 		        <!-- Tomcat7 Maven Plugin -->
-		        <plugin>
-		          <groupId>org.apache.tomcat.maven</groupId>
-		          <artifactId>tomcat7-maven-plugin</artifactId>
-		          <version>${tomcat7-maven-plugin-version}</version>
-		        </plugin>
+				<plugin>
+					<groupId>org.apache.tomcat.maven</groupId>
+					<artifactId>tomcat7-maven-plugin</artifactId>
+					<version>${tomcat7-maven-plugin-version}</version>
+				</plugin>
 		        <!-- Create the web application archive -->
-		        <plugin>
-		          <groupId>org.apache.maven.plugins</groupId>
-		          <artifactId>maven-war-plugin</artifactId>
-		          <version>${maven-war-plugin-version}</version>
-		          <configuration>
-		            <archive>
-		              <addMavenDescriptor>false</addMavenDescriptor>
-		            </archive>
-		          </configuration>
-		        </plugin>
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-war-plugin</artifactId>
+					<version>${maven-war-plugin-version}</version>
+					<configuration>
+						<archive>
+							<addMavenDescriptor>false</addMavenDescriptor>
+						</archive>
+					</configuration>
+				</plugin>
 		        <!-- GWT compiler execution -->
-		        <plugin>
-		          <groupId>org.codehaus.mojo</groupId>
-		          <artifactId>gwt-maven-plugin</artifactId>
-		          <version>${gwt-maven-plugin-version}</version>
-		          <configuration>
-		            <deploy>${project.build.directory}/gwtc/extra</deploy>
-		            <extra>${project.build.directory}/gwtc/extra</extra>
-		            <gen>${project.build.directory}/gwtc/gen</gen>
+				<plugin>
+					<groupId>org.codehaus.mojo</groupId>
+					<artifactId>gwt-maven-plugin</artifactId>
+					<version>${gwt-maven-plugin-version}</version>
+					<configuration>
+						<deploy>${project.build.directory}/gwtc/extra</deploy>
+						<extra>${project.build.directory}/gwtc/extra</extra>
+						<gen>${project.build.directory}/gwtc/gen</gen>
 		            <!-- There's an issue on Mac: see http://code.google.com/p/google-web-toolkit/issues/detail?id=7474
 		            <workDir>${project.build.directory}/gwtc/work</workDir>
 		            <codeServerWorkDir>${project.build.directory}/gwtc/superDevMode</codeServerWorkDir>
 		            -->
-		          </configuration>
-		          <executions>
-		            <execution>
-		              <id>gwt-compile</id>
-		              <phase>prepare-package</phase>
-		              <goals>
-		                <goal>compile</goal>
-		              </goals>
-		            </execution>
-		          </executions>
-		        </plugin>
+					</configuration>
+					<executions>
+						<execution>
+							<id>gwt-compile</id>
+							<phase>prepare-package</phase>
+							<goals>
+								<goal>compile</goal>
+							</goals>
+						</execution>
+					</executions>
+				</plugin>
 				<!--This plugin's configuration is used to store Eclipse m2e settings only. It has no influence on the Maven build itself.-->
 				<plugin>
 					<groupId>org.eclipse.m2e</groupId>
@@ -497,65 +507,125 @@
 			</dependency>
 			<!-- GWT-user -->
 			<dependency>
-		        <groupId>com.google.gwt</groupId>
-		        <artifactId>gwt-user</artifactId>
-		        <version>${gwt-dependency-version}</version>
-		        <scope>provided</scope>
-	        </dependency>
+				<groupId>com.google.gwt</groupId>
+				<artifactId>gwt-user</artifactId>
+				<version>${gwt-dependency-version}</version>
+				<scope>provided</scope>
+			</dependency>
 			<dependency>
-		        <groupId>com.google.gwt</groupId>
-		        <artifactId>gwt-user</artifactId>
-		        <version>${gwt-dependency-version}</version>
-		        <classifier>sources</classifier>
-		        <scope>provided</scope>
-	        </dependency>
+				<groupId>com.google.gwt</groupId>
+				<artifactId>gwt-user</artifactId>
+				<version>${gwt-dependency-version}</version>
+				<classifier>sources</classifier>
+				<scope>provided</scope>
+			</dependency>
+			<!-- GWT-dev -->
+			<dependency>
+				<groupId>com.google.gwt</groupId>
+				<artifactId>gwt-dev</artifactId>
+				<version>${gwt-dependency-version}</version>
+				<scope>provided</scope>
+			</dependency>
+			<dependency>
+				<groupId>com.google.gwt</groupId>
+				<artifactId>gwt-dev</artifactId>
+				<version>${gwt-dependency-version}</version>
+				<classifier>sources</classifier>
+				<scope>provided</scope>
+			</dependency>
+			<!-- GWT-elemental -->
+			<dependency>
+				<groupId>com.google.gwt</groupId>
+				<artifactId>gwt-elemental</artifactId>
+				<version>${gwt-dependency-version}</version>
+				<scope>provided</scope>
+			</dependency>
+			<dependency>
+				<groupId>com.google.gwt</groupId>
+				<artifactId>gwt-elemental</artifactId>
+				<version>${gwt-dependency-version}</version>
+				<classifier>sources</classifier>
+				<scope>provided</scope>
+			</dependency>
 			<!-- GWT-servlet -->
-	        <dependency>
-		        <groupId>com.google.gwt</groupId>
-		        <artifactId>gwt-servlet</artifactId>
-		        <version>${gwt-dependency-version}</version>
-	        </dependency>
+			<dependency>
+				<groupId>com.google.gwt</groupId>
+				<artifactId>gwt-servlet</artifactId>
+				<version>${gwt-dependency-version}</version>
+			</dependency>
+			<!-- GWT-Exporter -->
+			<dependency>
+				<groupId>org.timepedia.exporter</groupId>
+				<artifactId>gwtexporter</artifactId>
+				<version>${gwtexporter-dependency-version}</version>
+	     		<type>jar</type>
+				<scope>provided</scope>
+			    <exclusions>
+			        <exclusion>
+			            <groupId>com.sun</groupId>
+			            <artifactId>tools</artifactId>
+			        </exclusion>
+			    </exclusions>
+			</dependency>
 			<!-- libGDX-gdx -->
 			<dependency>
-		        <groupId>com.badlogicgames.gdx</groupId>
-		        <artifactId>gdx</artifactId>
-		        <version>${gdx-dependency-version}</version>
-		        <scope>provided</scope>
-	        </dependency>
+				<groupId>com.badlogicgames.gdx</groupId>
+				<artifactId>gdx</artifactId>
+				<version>${gdx-dependency-version}</version>
+				<scope>provided</scope>
+			</dependency>
 			<dependency>
-		        <groupId>com.badlogicgames.gdx</groupId>
-		        <artifactId>gdx</artifactId>
-		        <version>${gdx-dependency-version}</version>
-		        <classifier>sources</classifier>
-		        <scope>provided</scope>
-	        </dependency>
+				<groupId>com.badlogicgames.gdx</groupId>
+				<artifactId>gdx</artifactId>
+				<version>${gdx-dependency-version}</version>
+				<classifier>sources</classifier>
+				<scope>provided</scope>
+			</dependency>
 			<!-- gdx-backend-gwt -->
 			<dependency>
-		        <groupId>com.badlogicgames.gdx</groupId>
-		        <artifactId>gdx-backend-gwt</artifactId>
-		        <version>${gdx-dependency-version}</version>
-		        <scope>provided</scope>
-	        </dependency>
+				<groupId>com.badlogicgames.gdx</groupId>
+				<artifactId>gdx-backend-gwt</artifactId>
+				<version>${gdx-dependency-version}</version>
+				<scope>provided</scope>
+			</dependency>
 			<dependency>
-		        <groupId>com.badlogicgames.gdx</groupId>
-		        <artifactId>gdx-backend-gwt</artifactId>
-		        <version>${gdx-dependency-version}</version>
-		        <classifier>sources</classifier>
-		        <scope>provided</scope>
-	        </dependency>
+				<groupId>com.badlogicgames.gdx</groupId>
+				<artifactId>gdx-backend-gwt</artifactId>
+				<version>${gdx-dependency-version}</version>
+				<classifier>sources</classifier>
+				<scope>provided</scope>
+			</dependency>
 			<!-- Servlet-API -->
-	        <dependency>
-		        <groupId>javax.servlet</groupId>
-		        <artifactId>javax.servlet-api</artifactId>
-		        <version>${servlet-api-dependency-version}</version>
-		        <scope>provided</scope>
-	        </dependency>
+			<dependency>
+				<groupId>javax.servlet</groupId>
+				<artifactId>javax.servlet-api</artifactId>
+				<version>${servlet-api-dependency-version}</version>
+				<scope>provided</scope>
+			</dependency>
 	        <!-- Groovy -->
 			<dependency>
-			    <groupId>org.codehaus.groovy</groupId>
-			    <artifactId>groovy-all</artifactId>
-			    <version>${groovy-all-dependency-version}</version>
+				<groupId>org.codehaus.groovy</groupId>
+				<artifactId>groovy-all</artifactId>
+				<version>${groovy-all-dependency-version}</version>
 			</dependency>
+			<!-- Google Guice -->
+			<dependency>
+				<groupId>com.google.inject</groupId>
+				<artifactId>guice</artifactId>
+				<version>${guice-dependency-version}</version>
+			</dependency>
+			<dependency>
+				<groupId>com.google.inject.extensions</groupId>
+				<artifactId>guice-assistedinject</artifactId>
+				<version>${guice-dependency-version}</version>
+			</dependency>
+		    <!-- Google GIN -->
+			<dependency>
+				<groupId>com.google.gwt.inject</groupId>
+				<artifactId>gin</artifactId>
+				<version>${gin-dependency-version}</version>
+			</dependency>
+
 		</dependencies>
 	</dependencyManagement>
 </project>
