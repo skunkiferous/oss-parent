@@ -469,6 +469,12 @@
 				<version>${junit-dependency-version}</version>
 				<scope>test</scope>
 			</dependency>
+			<dependency>
+				<groupId>junit</groupId>
+				<artifactId>junit</artifactId>
+				<version>${junit-dependency-version}</version>
+				<scope>test</scope>
+			</dependency>
 			<!-- slf4j API -->
 			<dependency>
 				<groupId>org.slf4j</groupId>
