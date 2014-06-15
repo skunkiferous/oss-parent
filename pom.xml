@@ -12,7 +12,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.blockwithme</groupId>
 	<artifactId>oss-parent</artifactId>
-	<version>0.1.0</version>
+	<version>0.5.0</version>
 	<packaging>pom</packaging>
 	<name>oss-parent</name>
 	<description>Base configuration for my Maven projects.</description>
@@ -107,7 +107,7 @@
 		<maven-site-plugin-version>3.3</maven-site-plugin-version>
 		<maven-source-plugin-version>2.2.1</maven-source-plugin-version>
 		<plexus-compiler-eclipse-plugin-version>2.3</plexus-compiler-eclipse-plugin-version>
-		<xtend-maven-plugin-version>2.5.0</xtend-maven-plugin-version>
+		<xtend-maven-plugin-version>2.6.0</xtend-maven-plugin-version>
 		<build-helper-maven-plugin-version>1.8</build-helper-maven-plugin-version>
 		<jetty-maven-plugin-version>9.1.2.v20140210</jetty-maven-plugin-version>
 		<tomcat7-maven-plugin-version>2.2</tomcat7-maven-plugin-version>
@@ -129,6 +129,11 @@
 		<gwtexporter-dependency-version>2.5.0-SNAPSHOT</gwtexporter-dependency-version>
 		<servlet-api-dependency-version>3.0.1</servlet-api-dependency-version>
 		<groovy-all-dependency-version>2.1.5</groovy-all-dependency-version>
+		<gwt-slf4j-dependency-version>0.0.2</gwt-slf4j-dependency-version>
+		<metrics-dependency-version>3.0.0</metrics-dependency-version>
+		<gwt-test-utils-dependency-version>0.47</gwt-test-utils-dependency-version>
+		<javassist-dependency-version>3.18.1-GA</javassist-dependency-version>
+		<jackson-dependency-version>2.4.0</jackson-dependency-version>
 	</properties>
 
 	<build>
@@ -170,7 +175,15 @@
 								<followSymlinks>false</followSymlinks>
 							</fileset>
 							<fileset>
+								<directory>${project.basedir}/src/main/generated-sources</directory>
+								<followSymlinks>false</followSymlinks>
+							</fileset>
+							<fileset>
 								<directory>${project.basedir}/src/test/xtend-gen</directory>
+								<followSymlinks>false</followSymlinks>
+							</fileset>
+							<fileset>
+								<directory>${project.basedir}/src/test/generated-sources</directory>
 								<followSymlinks>false</followSymlinks>
 							</fileset>
 							<fileset>
@@ -239,10 +252,10 @@
 					<executions>
 						<execution>
 							<id>attach-sources</id>
-							<!-- GWT archetype uses: <phase>package</phase><goal>jar-no-fork</goal> -->
+							<!-- GWT archetype uses: <phase>package</phase> -->
 							<phase>post-integration-test</phase>
 							<goals>
-								<goal>jar</goal>
+								<goal>jar-no-fork</goal>
 							</goals>
 						</execution>
 					</executions>
@@ -330,7 +343,7 @@
 						</execution>
 					</executions>
 				</plugin>
-                <!-- Build Helper Maven Plugin -->
+                	<!-- Build Helper Maven Plugin -->
 				<plugin>
 					<groupId>org.codehaus.mojo</groupId>
 					<artifactId>build-helper-maven-plugin</artifactId>
@@ -481,18 +494,78 @@
 				<artifactId>slf4j-api</artifactId>
 				<version>${slf4j-dependency-version}</version>
 			</dependency>
-			<!-- slf4j impl: Only for tests! -->
+			<dependency>
+				<groupId>org.slf4j</groupId>
+				<artifactId>slf4j-api</artifactId>
+				<version>${slf4j-dependency-version}</version>
+				<classifier>sources</classifier>
+			</dependency>
+			<!-- slf4j simple: Only for tests! -->
 			<dependency>
 				<groupId>org.slf4j</groupId>
 				<artifactId>slf4j-simple</artifactId>
 				<version>${slf4j-dependency-version}</version>
 				<scope>test</scope>
 			</dependency>
+			<!-- slf4j-log4j12 -->
+			<dependency>
+				<groupId>org.slf4j</groupId>
+				<artifactId>slf4j-log4j12</artifactId>
+				<version>${slf4j-dependency-version}</version>
+			</dependency>
+			<!-- slf4j-jdk14 -->
+			<dependency>
+				<groupId>org.slf4j</groupId>
+				<artifactId>slf4j-jdk14</artifactId>
+				<version>${slf4j-dependency-version}</version>
+			</dependency>
+			<!-- jcl-over-slf4j -->
+			<dependency>
+				<groupId>org.slf4j</groupId>
+				<artifactId>jcl-over-slf4j</artifactId>
+				<version>${slf4j-dependency-version}</version>
+			</dependency>
+			<!-- log4j-over-slf4j -->
+			<dependency>
+				<groupId>org.slf4j</groupId>
+				<artifactId>log4j-over-slf4j</artifactId>
+				<version>${slf4j-dependency-version}</version>
+			</dependency>
+			<!-- jul-to-slf4j -->
+			<dependency>
+				<groupId>org.slf4j</groupId>
+				<artifactId>jul-to-slf4j</artifactId>
+				<version>${slf4j-dependency-version}</version>
+			</dependency>
+			<!-- osgi-over-slf4j -->
+			<dependency>
+				<groupId>org.slf4j</groupId>
+				<artifactId>osgi-over-slf4j</artifactId>
+				<version>${slf4j-dependency-version}</version>
+			</dependency>
+			<!-- My own Functors -->
+			<dependency>
+				<groupId>de.benediktmeurer.gwt-slf4j</groupId>
+				<artifactId>gwt-slf4j</artifactId>
+				<version>${gwt-slf4j-dependency-version}</version>
+			</dependency>
+			<dependency>
+				<groupId>de.benediktmeurer.gwt-slf4j</groupId>
+				<artifactId>gwt-slf4j</artifactId>
+				<version>${gwt-slf4j-dependency-version}</version>
+				<classifier>sources</classifier>
+			</dependency>
 			<!-- My own Functors -->
 			<dependency>
 				<groupId>com.blockwithme</groupId>
 				<artifactId>FuncGenerated012</artifactId>
 				<version>${FuncGenerated012-dependency-version}</version>
+			</dependency>
+			<dependency>
+				<groupId>com.blockwithme</groupId>
+				<artifactId>FuncGenerated012</artifactId>
+				<version>${FuncGenerated012-dependency-version}</version>
+				<classifier>sources</classifier>
 			</dependency>
 			<!-- Xtend -->
 			<dependency>
@@ -502,14 +575,32 @@
 			</dependency>
 			<dependency>
 				<groupId>org.eclipse.xtend</groupId>
+				<artifactId>org.eclipse.xtend.lib</artifactId>
+				<version>${org.eclipse.xtend.lib-dependency-version}</version>
+				<classifier>sources</classifier>
+			</dependency>
+			<dependency>
+				<groupId>org.eclipse.xtend</groupId>
 				<artifactId>org.eclipse.xtend.core</artifactId>
 				<version>${org.eclipse.xtend.core-dependency-version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.eclipse.xtend</groupId>
+				<artifactId>org.eclipse.xtend.core</artifactId>
+				<version>${org.eclipse.xtend.core-dependency-version}</version>
+				<classifier>sources</classifier>
 			</dependency>
 			<!-- Guava -->
 			<dependency>
 				<groupId>com.google.guava</groupId>
 				<artifactId>guava</artifactId>
 				<version>${guava-dependency-version}</version>
+			</dependency>
+			<dependency>
+				<groupId>com.google.guava</groupId>
+				<artifactId>guava</artifactId>
+				<version>${guava-dependency-version}</version>
+				<classifier>sources</classifier>
 			</dependency>
 			<!-- GWT-user -->
 			<dependency>
@@ -564,14 +655,14 @@
 				<groupId>org.timepedia.exporter</groupId>
 				<artifactId>gwtexporter</artifactId>
 				<version>${gwtexporter-dependency-version}</version>
-	     		<type>jar</type>
+				<type>jar</type>
 				<scope>provided</scope>
-			    <exclusions>
-			        <exclusion>
-			            <groupId>com.sun</groupId>
-			            <artifactId>tools</artifactId>
-			        </exclusion>
-			    </exclusions>
+				<exclusions>
+					<exclusion>
+						<groupId>com.sun</groupId>
+						<artifactId>tools</artifactId>
+					</exclusion>
+				</exclusions>
 			</dependency>
 			<!-- libGDX-gdx -->
 			<dependency>
@@ -608,7 +699,7 @@
 				<version>${servlet-api-dependency-version}</version>
 				<scope>provided</scope>
 			</dependency>
-	        <!-- Groovy -->
+			<!-- Groovy -->
 			<dependency>
 				<groupId>org.codehaus.groovy</groupId>
 				<artifactId>groovy-all</artifactId>
@@ -621,15 +712,88 @@
 				<version>${guice-dependency-version}</version>
 			</dependency>
 			<dependency>
+				<groupId>com.google.inject</groupId>
+				<artifactId>guice</artifactId>
+				<version>${guice-dependency-version}</version>
+				<classifier>sources</classifier>
+			</dependency>
+			<dependency>
 				<groupId>com.google.inject.extensions</groupId>
 				<artifactId>guice-assistedinject</artifactId>
 				<version>${guice-dependency-version}</version>
 			</dependency>
-		    <!-- Google GIN -->
+			<dependency>
+				<groupId>com.google.inject.extensions</groupId>
+				<artifactId>guice-assistedinject</artifactId>
+				<version>${guice-dependency-version}</version>
+				<classifier>sources</classifier>
+			</dependency>
+			<dependency>
+				<groupId>com.google.inject.extensions</groupId>
+				<artifactId>guice-multibindings</artifactId>
+				<version>${guice-dependency-version}</version>
+			</dependency>
+			<dependency>
+				<groupId>com.google.inject.extensions</groupId>
+				<artifactId>guice-multibindings</artifactId>
+				<version>${guice-dependency-version}</version>
+				<classifier>sources</classifier>
+			</dependency>
+			<!-- Google GIN -->
 			<dependency>
 				<groupId>com.google.gwt.inject</groupId>
 				<artifactId>gin</artifactId>
 				<version>${gin-dependency-version}</version>
+			</dependency>
+			<dependency>
+				<groupId>com.google.gwt.inject</groupId>
+				<artifactId>gin</artifactId>
+				<version>${gin-dependency-version}</version>
+				<classifier>sources</classifier>
+			</dependency>
+			<!-- Codahale Metrics API -->
+			<dependency>
+				<groupId>com.codahale.metrics</groupId>
+				<artifactId>metrics-core</artifactId>
+				<version>${metrics-dependency-version}</version>
+			</dependency>
+			<dependency>
+				<groupId>com.codahale.metrics</groupId>
+				<artifactId>metrics-core</artifactId>
+				<version>${metrics-dependency-version}</version>
+				<classifier>sources</classifier>
+			</dependency>
+			<!-- GWT Test Utils API -->
+			<dependency>
+				<groupId>com.googlecode.gwt-test-utils</groupId>
+				<artifactId>gwt-test-utils</artifactId>
+				<version>${gwt-test-utils-dependency-version}</version>
+				<scope>test</scope>
+			</dependency>
+			<dependency>
+				<groupId>com.googlecode.gwt-test-utils</groupId>
+				<artifactId>gwt-test-utils</artifactId>
+				<version>${gwt-test-utils-dependency-version}</version>
+				<scope>test</scope>
+				<classifier>sources</classifier>
+			</dependency>
+			<!-- javassist API -->
+			<dependency>
+				<groupId>org.javassist</groupId>
+				<artifactId>javassist</artifactId>
+				<version>${javassist-dependency-version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.javassist</groupId>
+				<artifactId>javassist</artifactId>
+				<version>${javassist-dependency-version}</version>
+				<classifier>sources</classifier>
+			</dependency>
+			<!--  -->
+			<dependency>
+				<groupId>com.fasterxml.jackson.core</groupId>
+				<artifactId>jackson-core</artifactId>
+				<version>${jackson-dependency-version}</version>
 			</dependency>
 
 		</dependencies>
