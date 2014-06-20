@@ -12,7 +12,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.blockwithme</groupId>
 	<artifactId>oss-parent</artifactId>
-	<version>0.7.0</version>
+	<version>0.8.0</version>
 	<packaging>pom</packaging>
 	<name>oss-parent</name>
 	<description>Base configuration for my Maven projects.</description>
@@ -295,8 +295,8 @@
 								<goal>xtend-test-install-debug-info</goal>
 							</goals>
 							<configuration>
-								<outputDirectory>>${project.basedir}/src/main/xtend-gen</outputDirectory>
-								<testOutputDirectory>>${project.basedir}/src/test/xtend-gen</testOutputDirectory>
+								<outputDirectory>${project.basedir}/src/main/xtend-gen</outputDirectory>
+								<testOutputDirectory>${project.basedir}/src/test/xtend-gen</testOutputDirectory>
 							</configuration>
 						</execution>
 					</executions>
