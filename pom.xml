@@ -12,7 +12,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.blockwithme</groupId>
 	<artifactId>oss-parent</artifactId>
-	<version>0.5.0</version>
+	<version>0.6.0</version>
 	<packaging>pom</packaging>
 	<name>oss-parent</name>
 	<description>Base configuration for my Maven projects.</description>
@@ -112,7 +112,7 @@
 		<jetty-maven-plugin-version>9.1.2.v20140210</jetty-maven-plugin-version>
 		<tomcat7-maven-plugin-version>2.2</tomcat7-maven-plugin-version>
 		<maven-war-plugin-version>2.4</maven-war-plugin-version>
-		<gwt-maven-plugin-version>2.6.0</gwt-maven-plugin-version>
+		<gwt-maven-plugin-version>2.6.1</gwt-maven-plugin-version>
 		<maven-surefire-plugin-version>2.17</maven-surefire-plugin-version>
 
 		<!-- All the versions of the dependencies -->
@@ -175,15 +175,7 @@
 								<followSymlinks>false</followSymlinks>
 							</fileset>
 							<fileset>
-								<directory>${project.basedir}/src/main/generated-sources</directory>
-								<followSymlinks>false</followSymlinks>
-							</fileset>
-							<fileset>
 								<directory>${project.basedir}/src/test/xtend-gen</directory>
-								<followSymlinks>false</followSymlinks>
-							</fileset>
-							<fileset>
-								<directory>${project.basedir}/src/test/generated-sources</directory>
 								<followSymlinks>false</followSymlinks>
 							</fileset>
 							<fileset>
@@ -192,17 +184,6 @@
 							</fileset>
 						</filesets>
 					</configuration>
-<!--
-					<executions>
-						<execution>
-							<id>auto-clean</id>
-							<phase>initialize</phase>
-							<goals>
-								<goal>clean</goal>
-							</goals>
-						</execution>
-					</executions>
--->
 				</plugin>
 				<!-- To "execute some task" (generate sources in some projects) -->
 				<plugin>
@@ -314,8 +295,8 @@
 								<goal>xtend-test-install-debug-info</goal>
 							</goals>
 							<configuration>
-								<outputDirectory>src/main/xtend-gen</outputDirectory>
-								<testOutputDirectory>src/test/xtend-gen</testOutputDirectory>
+								<outputDirectory>>${project.basedir}/src/main/xtend-gen</outputDirectory>
+								<testOutputDirectory>>${project.basedir}/src/test/xtend-gen</testOutputDirectory>
 							</configuration>
 						</execution>
 					</executions>
@@ -789,7 +770,7 @@
 				<version>${javassist-dependency-version}</version>
 				<classifier>sources</classifier>
 			</dependency>
-			<!--  -->
+			<!-- Jackson-Core -->
 			<dependency>
 				<groupId>com.fasterxml.jackson.core</groupId>
 				<artifactId>jackson-core</artifactId>
