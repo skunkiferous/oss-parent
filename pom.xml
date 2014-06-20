@@ -12,7 +12,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.blockwithme</groupId>
 	<artifactId>oss-parent</artifactId>
-	<version>0.6.0</version>
+	<version>0.7.0</version>
 	<packaging>pom</packaging>
 	<name>oss-parent</name>
 	<description>Base configuration for my Maven projects.</description>
@@ -107,12 +107,12 @@
 		<maven-site-plugin-version>3.3</maven-site-plugin-version>
 		<maven-source-plugin-version>2.2.1</maven-source-plugin-version>
 		<plexus-compiler-eclipse-plugin-version>2.3</plexus-compiler-eclipse-plugin-version>
-		<xtend-maven-plugin-version>2.6.0</xtend-maven-plugin-version>
+		<xtend-maven-plugin-version>2.6.1</xtend-maven-plugin-version>
 		<build-helper-maven-plugin-version>1.8</build-helper-maven-plugin-version>
 		<jetty-maven-plugin-version>9.1.2.v20140210</jetty-maven-plugin-version>
 		<tomcat7-maven-plugin-version>2.2</tomcat7-maven-plugin-version>
 		<maven-war-plugin-version>2.4</maven-war-plugin-version>
-		<gwt-maven-plugin-version>2.6.1</gwt-maven-plugin-version>
+		<gwt-maven-plugin-version>2.6.0</gwt-maven-plugin-version>
 		<maven-surefire-plugin-version>2.17</maven-surefire-plugin-version>
 
 		<!-- All the versions of the dependencies -->
