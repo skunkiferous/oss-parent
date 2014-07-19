@@ -12,7 +12,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.blockwithme</groupId>
 	<artifactId>oss-parent</artifactId>
-	<version>0.9.0</version>
+	<version>0.10.0</version>
 	<packaging>pom</packaging>
 	<name>oss-parent</name>
 	<description>Base configuration for my Maven projects.</description>
@@ -114,6 +114,26 @@
 		<maven-war-plugin-version>2.4</maven-war-plugin-version>
 		<gwt-maven-plugin-version>2.6.0</gwt-maven-plugin-version>
 		<maven-surefire-plugin-version>2.17</maven-surefire-plugin-version>
+		<findbugs-maven-plugin-version>2.5.4</findbugs-maven-plugin-version>
+		<maven-antrun-plugin-version>1.7</maven-antrun-plugin-version>
+		<maven-assembly-plugin-version>2.4</maven-assembly-plugin-version>
+		<maven-changes-plugin-version>2.10</maven-changes-plugin-version>
+		<maven-checkstyle-plugin-version>2.12.1</maven-checkstyle-plugin-version>
+		<maven-dependency-plugin-version>2.8</maven-dependency-plugin-version>
+		<maven-eclipse-plugin-version>2.9</maven-eclipse-plugin-version>
+		<maven-external-dependency-plugin-version>0.5</maven-external-dependency-plugin-version>
+		<maven-gpg-plugin-version>1.5</maven-gpg-plugin-version>
+		<maven-jxr-plugin-version>2.4</maven-jxr-plugin-version>
+		<maven-pmd-plugin-version>3.1</maven-pmd-plugin-version>
+		<maven-project-info-reports-plugin-version>2.7</maven-project-info-reports-plugin-version>
+		<maven-release-plugin-version>2.5</maven-release-plugin-version>
+		<maven-repository-plugin-version>2.3.1</maven-repository-plugin-version>
+		<maven-resources-plugin-version>2.6</maven-resources-plugin-version>
+		<maven-scm-plugin-version>1.9</maven-scm-plugin-version>
+		<maven-shade-plugin-version>2.3</maven-shade-plugin-version>
+		<maven-surefire-report-plugin-version>2.17</maven-surefire-report-plugin-version>
+		<maven-toolchains-plugin-version>1.0</maven-toolchains-plugin-version>
+		<reflections-maven-version>0.9.9-RC2</reflections-maven-version>
 
 		<!-- All the versions of the dependencies -->
 		<FuncGenerated012-dependency-version>1.2.0</FuncGenerated012-dependency-version>
@@ -134,6 +154,36 @@
 		<gwt-test-utils-dependency-version>0.47</gwt-test-utils-dependency-version>
 		<javassist-dependency-version>3.18.1-GA</javassist-dependency-version>
 		<jackson-dependency-version>2.4.0</jackson-dependency-version>
+		<hppc-dependency-version>0.6.0</hppc-dependency-version>
+		<ant-dependency-version>1.9.4</ant-dependency-version>
+		<asm-all-dependency-version>5.0.3</asm-all-dependency-version>
+		<commons-cli-dependency-version>1.2</commons-cli-dependency-version>
+		<commons-codec-dependency-version>1.9</commons-codec-dependency-version>
+		<commons-io-dependency-version>2.4</commons-io-dependency-version>
+		<commons-lang-dependency-version>2.6</commons-lang-dependency-version>
+		<commons-logging-dependency-version>1.2</commons-logging-dependency-version>
+		<commons-net-dependency-version>3.3</commons-net-dependency-version>
+		<concurrentlinkedhashmap-lru-dependency-version>1.4</concurrentlinkedhashmap-lru-dependency-version>
+		<edu-umd-cs-findbugs-annotations-dependency-version>1.3.2-201002241900</edu-umd-cs-findbugs-annotations-dependency-version>
+		<fest-assert-core-dependency-version>2.0M10</fest-assert-core-dependency-version>
+		<fest-util-dependency-version>1.2.5</fest-util-dependency-version>
+		<groovy-dependency-version>2.3.4</groovy-dependency-version>
+		<jackson-dataformat-xml-dependency-version>2.3.4</jackson-dataformat-xml-dependency-version>
+		<json-simple-dependency-version>1.1.1</json-simple-dependency-version>
+		<jsr305-dependency-version>3.0.0</jsr305-dependency-version>
+		<junit-benchmarks-dependency-version>0.7.2</junit-benchmarks-dependency-version>
+		<lanterna-dependency-version>2.1.8</lanterna-dependency-version>
+		<log4j-dependency-version>1.2.17</log4j-dependency-version>
+		<lombok-dependency-version>0.11.6</lombok-dependency-version>
+		<mockito-all-dependency-version>1.9.5</mockito-all-dependency-version>
+		<msgpack-dependency-version>0.6.11</msgpack-dependency-version>
+		<org.osgi.compendium-dependency-version>5.0.0</org.osgi.compendium-dependency-version>
+		<org.osgi.core-dependency-version>5.0.0</org.osgi.core-dependency-version>
+		<pcollections-dependency-version>2.1.2</pcollections-dependency-version>
+		<qdox-dependency-version>2.0-M1</qdox-dependency-version>
+		<reflections-dependency-version>0.9.9-RC2</reflections-dependency-version>
+		<testng-dependency-version>6.8.8</testng-dependency-version>
+		<threetenbp-dependency-version>1.0</threetenbp-dependency-version>
 	</properties>
 
 	<build>
@@ -324,25 +374,25 @@
 						</execution>
 					</executions>
 				</plugin>
-                	<!-- Build Helper Maven Plugin -->
+				<!-- Build Helper Maven Plugin -->
 				<plugin>
 					<groupId>org.codehaus.mojo</groupId>
 					<artifactId>build-helper-maven-plugin</artifactId>
 					<version>${build-helper-maven-plugin-version}</version>
 				</plugin>
-		        <!-- Jetty Maven Plugin -->
+				<!-- Jetty Maven Plugin -->
 				<plugin>
 					<groupId>org.eclipse.jetty</groupId>
 					<artifactId>jetty-maven-plugin</artifactId>
 					<version>${jetty-maven-plugin-version}</version>
 				</plugin>
-		        <!-- Tomcat7 Maven Plugin -->
+				<!-- Tomcat7 Maven Plugin -->
 				<plugin>
 					<groupId>org.apache.tomcat.maven</groupId>
 					<artifactId>tomcat7-maven-plugin</artifactId>
 					<version>${tomcat7-maven-plugin-version}</version>
 				</plugin>
-		        <!-- Create the web application archive -->
+				<!-- Create the web application archive -->
 				<plugin>
 					<groupId>org.apache.maven.plugins</groupId>
 					<artifactId>maven-war-plugin</artifactId>
@@ -353,7 +403,7 @@
 						</archive>
 					</configuration>
 				</plugin>
-		        <!-- GWT compiler execution -->
+			        <!-- GWT compiler execution -->
 				<plugin>
 					<groupId>org.codehaus.mojo</groupId>
 					<artifactId>gwt-maven-plugin</artifactId>
@@ -377,7 +427,211 @@
 						</execution>
 					</executions>
 				</plugin>
+				<!-- FindBugs Maven Plugin -->
+				<plugin>
+					<groupId>org.codehaus.mojo</groupId>
+					<artifactId>findbugs-maven-plugin</artifactId>
+					<version>${findbugs-maven-plugin-version}</version>
+					<configuration>
+						<threshold>Low</threshold>
+						<failOnError>false</failOnError>
+						<debug>true</debug>
+					</configuration>
+				</plugin>
+				<!-- Maven AntRun Plugin -->
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-antrun-plugin</artifactId>
+					<version>${maven-antrun-plugin-version}</version>
+					<!-- http://docs.codehaus.org/display/MAVENUSER/Running+ant+tasks+that+use+the+JDK -->
+					<dependencies>
+						<dependency>
+							<groupId>com.sun</groupId>
+							<artifactId>tools</artifactId>
+							<version>${java-version}.0</version>
+							<scope>system</scope>
+							<systemPath>${java.home}/../lib/tools.jar</systemPath>
+						</dependency>
+					</dependencies>
+				</plugin>
+				<!-- Maven Assembly Plugin -->
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-assembly-plugin</artifactId>
+					<version>${maven-assembly-plugin-version}</version>
+				</plugin>
+				<!-- Apache Maven Checkstyle Plugin -->
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-checkstyle-plugin</artifactId>
+					<version>${maven-checkstyle-plugin-version}</version>
+					<configuration>
+						<configLocation>${project.parent.basedir}/checkstyle.xml</configLocation>
+					</configuration>
+				</plugin>
+				<!-- Maven Dependency Plugin: Copy dependencies in lib dir, to allow jar to run from build dir. -->
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-dependency-plugin</artifactId>
+					<version>${maven-dependency-plugin-version}</version>
+					<executions>
+						<execution>
+							<id>copy-dependencies</id>
+							<phase>package</phase>
+							<goals>
+								<goal>copy-dependencies</goal>
+							</goals>
+							<configuration>
+								<outputDirectory>
+									${project.build.directory}/lib
+								</outputDirectory>
+							</configuration>
+						</execution>
+					</executions>
+				</plugin>
+				<!-- Maven Eclipse Plugin: used to generate Eclipse IDE files -->
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-eclipse-plugin</artifactId>
+					<version>${maven-eclipse-plugin-version}</version>
+				</plugin>
+				<!-- Maven External Dependency Plugin: EXTERNAL DEPENDENCY RESOLVER -->
+				<plugin>
+					<groupId>com.savage7.maven.plugins</groupId>
+					<artifactId>maven-external-dependency-plugin</artifactId>
+					<version>${maven-external-dependency-plugin-version}</version>
+				</plugin>
+				<!-- Apache Maven GPG Plugin -->
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-gpg-plugin</artifactId>
+					<version>${maven-gpg-plugin-version}</version>
+					<executions>
+						<execution>
+							<id>sign-artifacts</id>
+							<phase>verify</phase>
+							<goals>
+								<goal>sign</goal>
+							</goals>
+						</execution>
+					</executions>
+				</plugin>
+				<!-- Maven JXR Plugin: produces a cross-reference of the project's sources -->
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-jxr-plugin</artifactId>
+					<version>${maven-jxr-plugin-version}</version>
+				</plugin>
+				<!-- Apache Maven PMD Plugin -->
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-pmd-plugin</artifactId>
+					<version>${maven-pmd-plugin-version}</version>
+					<configuration>
+						<linkXref>true</linkXref>
+						<sourceEncoding>utf-8</sourceEncoding>
+						<minimumTokens>100</minimumTokens>
+						<targetJdk>${java-version}</targetJdk>
+					</configuration>
+				</plugin>
+				<!-- Maven Release Plugin -->
+				<plugin>
+					<!-- release to sonaytype staging repo -->
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-release-plugin</artifactId>
+					<version>${maven-release-plugin-version}</version>
+					<configuration>
+						<!-- used by release:prepare -->
+						<preparationGoals>clean verify</preparationGoals>
+						<!-- used by release:perform -->
+						<goals>deploy</goals>
+					</configuration>
+				</plugin>
+				<!-- Maven Repository Plugin -->
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-repository-plugin</artifactId>
+					<version>${maven-repository-plugin-version}</version>
+				</plugin>
+				<!-- Maven Resources Plugin -->
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-resources-plugin</artifactId>
+					<version>${maven-resources-plugin-version}</version>
+				</plugin>
+				<!-- Maven SCM Plugin -->
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-scm-plugin</artifactId>
+					<version>${maven-scm-plugin-version}</version>
+					<configuration>
+						<goals>install</goals>
+					</configuration>
+				</plugin>
+				<!-- Apache Maven Shade Plugin -->
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-shade-plugin</artifactId>
+					<version>${maven-shade-plugin-version}</version>
+					<executions>
+						<execution>
+						<phase>package</phase>
+						<goals>
+						<goal>shade</goal>
+						</goals>
+						</execution>
+					</executions>
+					<configuration>
+						<finalName>uber-${project.artifactId}-${project.version}</finalName>
+					</configuration>
+				</plugin>
+				<!-- Maven Surefire Report Plugin -->
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-surefire-report-plugin</artifactId>
+					<version>${maven-surefire-report-plugin-version}</version>
+					<configuration>
+						<showSuccess>true</showSuccess>
+					</configuration>
+				</plugin>
+				<!-- Maven Toolchains Plugin -->
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-toolchains-plugin</artifactId>
+					<version>${maven-toolchains-plugin-version}</version>
+					<executions>
+						<execution>
+							<phase>validate</phase>
+							<goals>
+								<goal>toolchain</goal>
+							</goals>
+						</execution>
+					</executions>
+					<configuration>
+						<toolchains>
+							<jdk>
+								<version>${java-version}</version>
+								<vendor>oracle</vendor>
+							</jdk>
+						</toolchains>
+					</configuration>
+				</plugin>
+				<!-- Reflections Maven plugin -->
+				<plugin>
+					<groupId>org.reflections</groupId>
+					<artifactId>reflections-maven</artifactId>
+					<version>${reflections-maven-version}</version>
+					<executions>
+						<execution>
+							<goals>
+								<goal>reflections</goal>
+							</goals>
+							<phase>process-classes</phase>
+						</execution>
+					</executions>
+				</plugin>
 				<!--This plugin's configuration is used to store Eclipse m2e settings only. It has no influence on the Maven build itself.-->
+<!--
 				<plugin>
 					<groupId>org.eclipse.m2e</groupId>
 					<artifactId>lifecycle-mapping</artifactId>
@@ -427,6 +681,7 @@
 						</lifecycleMappingMetadata>
 					</configuration>
 				</plugin>
+-->
 			</plugins>
 		</pluginManagement>
 
@@ -453,6 +708,46 @@
 -->
 
 	</build>
+
+	<reporting>
+		<!--reportingManagement-->
+		<plugins>
+			<!-- Apache Maven Changes Plugin -->
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-changes-plugin</artifactId>
+				<version>${maven-changes-plugin-version}</version>
+				<reportSets>
+					<reportSet>
+						<reports>
+							<report>changes-report</report>
+						</reports>
+					</reportSet>
+				</reportSets>
+			</plugin>
+			<!-- Maven Project Info Reports Plugin -->
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-project-info-reports-plugin</artifactId>
+				<version>${maven-project-info-reports-plugin-version}</version>
+				<reportSets>
+					<reportSet>
+						<reports>
+							<report>index</report>
+							<report>dependencies</report>
+							<report>project-team</report>
+							<report>mailing-list</report>
+							<report>issue-tracking</report>
+							<report>license</report>
+							<report>scm</report>
+							<report>summary</report>
+						</reports>
+					</reportSet>
+				</reportSets>
+			</plugin>
+		</plugins>
+		<!--/reportingManagement-->
+	</reporting>
 
 	<dependencyManagement>
 		<dependencies>
@@ -801,6 +1096,382 @@
 				<groupId>com.fasterxml.jackson.core</groupId>
 				<artifactId>jackson-core</artifactId>
 				<version>${jackson-dependency-version}</version>
+			</dependency>
+			<dependency>
+				<groupId>com.fasterxml.jackson.core</groupId>
+				<artifactId>jackson-core</artifactId>
+				<version>${jackson-dependency-version}</version>
+				<classifier>sources</classifier>
+			</dependency>
+			<!-- HPPC: High Performance Primitive Collections for Java -->
+			<dependency>
+				<groupId>com.carrotsearch</groupId>
+				<artifactId>hppc</artifactId>
+				<version>${hppc-dependency-version}</version>
+			</dependency>
+			<dependency>
+				<groupId>com.carrotsearch</groupId>
+				<artifactId>hppc</artifactId>
+				<version>${hppc-dependency-version}</version>
+				<classifier>sources</classifier>
+			</dependency>
+			<!-- Apache ANT -->
+			<dependency>
+				<groupId>org.apache.ant</groupId>
+				<artifactId>ant</artifactId>
+				<version>${ant-dependency-version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.apache.ant</groupId>
+				<artifactId>ant</artifactId>
+				<version>${ant-dependency-version}</version>
+				<classifier>sources</classifier>
+			</dependency>
+			<!-- ASM All -->
+			<dependency>
+				<groupId>org.ow2.asm</groupId>
+				<artifactId>asm-all</artifactId>
+				<version>${asm-all-dependency-version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.ow2.asm</groupId>
+				<artifactId>asm-all</artifactId>
+				<version>${asm-all-dependency-version}</version>
+				<classifier>sources</classifier>
+			</dependency>
+			<!-- Commons CLI provides a simple API for presenting, processing and validating a command line interface. -->
+			<dependency>
+				<groupId>commons-cli</groupId>
+				<artifactId>commons-cli</artifactId>
+				<version>${commons-cli-dependency-version}</version>
+			</dependency>
+			<dependency>
+				<groupId>commons-cli</groupId>
+				<artifactId>commons-cli</artifactId>
+				<version>${commons-cli-dependency-version}</version>
+				<classifier>sources</classifier>
+			</dependency>
+			<!-- The Apache Commons Codec package contains simple encoder and decoders for various formats -->
+			<dependency>
+				<groupId>commons-codec</groupId>
+				<artifactId>commons-codec</artifactId>
+				<version>${commons-codec-dependency-version}</version>
+			</dependency>
+			<dependency>
+				<groupId>commons-codec</groupId>
+				<artifactId>commons-codec</artifactId>
+				<version>${commons-codec-dependency-version}</version>
+				<classifier>sources</classifier>
+			</dependency>
+			<!-- The Commons IO library -->
+			<dependency>
+				<groupId>commons-io</groupId>
+				<artifactId>commons-io</artifactId>
+				<version>${commons-io-dependency-version}</version>
+			</dependency>
+			<dependency>
+				<groupId>commons-io</groupId>
+				<artifactId>commons-io</artifactId>
+				<version>${commons-io-dependency-version}</version>
+				<classifier>sources</classifier>
+			</dependency>
+			<!-- The Commons Lang library -->
+			<dependency>
+				<groupId>commons-lang</groupId>
+				<artifactId>commons-lang</artifactId>
+				<version>${commons-lang-dependency-version}</version>
+			</dependency>
+			<dependency>
+				<groupId>commons-lang</groupId>
+				<artifactId>commons-lang</artifactId>
+				<version>${commons-lang-dependency-version}</version>
+				<classifier>sources</classifier>
+			</dependency>
+			<!-- Apache Commons Logging -->
+			<dependency>
+				<groupId>commons-logging</groupId>
+				<artifactId>commons-logging</artifactId>
+				<version>${commons-logging-dependency-version}</version>
+			</dependency>
+			<dependency>
+				<groupId>commons-logging</groupId>
+				<artifactId>commons-logging</artifactId>
+				<version>${commons-logging-dependency-version}</version>
+				<classifier>sources</classifier>
+			</dependency>
+			<!-- Apache Commons Net library -->
+			<dependency>
+				<groupId>commons-net</groupId>
+				<artifactId>commons-net</artifactId>
+				<version>${commons-net-dependency-version}</version>
+			</dependency>
+			<dependency>
+				<groupId>commons-net</groupId>
+				<artifactId>commons-net</artifactId>
+				<version>${commons-net-dependency-version}</version>
+				<classifier>sources</classifier>
+			</dependency>
+			<!-- A high performance version of java.util.LinkedHashMap for use as a software cache. -->
+			<dependency>
+				<groupId>com.googlecode.concurrentlinkedhashmap</groupId>
+				<artifactId>concurrentlinkedhashmap-lru</artifactId>
+				<version>${concurrentlinkedhashmap-lru-dependency-version}</version>
+			</dependency>
+			<dependency>
+				<groupId>com.googlecode.concurrentlinkedhashmap</groupId>
+				<artifactId>concurrentlinkedhashmap-lru</artifactId>
+				<version>${concurrentlinkedhashmap-lru-dependency-version}</version>
+				<classifier>sources</classifier>
+			</dependency>
+			<!-- FindBugs Annotations -->
+			<dependency>
+				<groupId>com.kenai.nbpwr</groupId>
+				<artifactId>edu-umd-cs-findbugs-annotations</artifactId>
+				<version>${edu-umd-cs-findbugs-annotations-dependency-version}</version>
+			</dependency>
+			<dependency>
+				<groupId>com.kenai.nbpwr</groupId>
+				<artifactId>edu-umd-cs-findbugs-annotations</artifactId>
+				<version>${edu-umd-cs-findbugs-annotations-dependency-version}</version>
+				<classifier>sources</classifier>
+			</dependency>
+			<!-- FEST Fluent Assertions (Core) -->
+			<dependency>
+				<groupId>org.easytesting</groupId>
+				<artifactId>fest-assert-core</artifactId>
+				<version>${fest-assert-core-dependency-version}</version>
+				<scope>test</scope>
+			</dependency>
+			<dependency>
+				<groupId>org.easytesting</groupId>
+				<artifactId>fest-assert-core</artifactId>
+				<version>${fest-assert-core-dependency-version}</version>
+				<scope>test</scope>
+				<classifier>sources</classifier>
+			</dependency>
+			<!-- Utility methods used by FEST modules -->
+			<dependency>
+				<groupId>org.easytesting</groupId>
+				<artifactId>fest-util</artifactId>
+				<version>${fest-util-dependency-version}</version>
+				<scope>test</scope>
+			</dependency>
+			<dependency>
+				<groupId>org.easytesting</groupId>
+				<artifactId>fest-util</artifactId>
+				<version>${fest-util-dependency-version}</version>
+				<scope>test</scope>
+				<classifier>sources</classifier>
+			</dependency>
+			<!-- Groovy: A powerful, dynamic language for the JVM -->
+			<dependency>
+				<groupId>org.codehaus.groovy</groupId>
+				<artifactId>groovy</artifactId>
+				<version>${groovy-dependency-version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.codehaus.groovy</groupId>
+				<artifactId>groovy</artifactId>
+				<version>${groovy-dependency-version}</version>
+				<classifier>sources</classifier>
+			</dependency>
+			<!-- Data format extension for Jackson -->
+			<dependency>
+				<groupId>com.fasterxml.jackson.dataformat</groupId>
+				<artifactId>jackson-dataformat-xml</artifactId>
+				<version>${jackson-dataformat-xml-dependency-version}</version>
+			</dependency>
+			<dependency>
+				<groupId>com.fasterxml.jackson.dataformat</groupId>
+				<artifactId>jackson-dataformat-xml</artifactId>
+				<version>${jackson-dataformat-xml-dependency-version}</version>
+				<classifier>sources</classifier>
+			</dependency>
+			<!-- JSON-simple: A simple Java toolkit for JSON -->
+			<dependency>
+				<groupId>com.googlecode.json-simple</groupId>
+				<artifactId>json-simple</artifactId>
+				<version>${json-simple-dependency-version}</version>
+			</dependency>
+			<dependency>
+				<groupId>com.googlecode.json-simple</groupId>
+				<artifactId>json-simple</artifactId>
+				<version>${json-simple-dependency-version}</version>
+				<classifier>sources</classifier>
+			</dependency>
+			<!-- JSR305 Annotations for Findbugs -->
+			<dependency>
+				<groupId>com.google.code.findbugs</groupId>
+				<artifactId>jsr305</artifactId>
+				<version>${jsr305-dependency-version}</version>
+			</dependency>
+			<dependency>
+				<groupId>com.google.code.findbugs</groupId>
+				<artifactId>jsr305</artifactId>
+				<version>${jsr305-dependency-version}</version>
+				<classifier>sources</classifier>
+			</dependency>
+			<!-- JUnitBenchmarks: A framework for writing performance micro-benchmarks using JUnit4 annotations. -->
+			<dependency>
+				<groupId>com.carrotsearch</groupId>
+				<artifactId>junit-benchmarks</artifactId>
+				<version>${junit-benchmarks-dependency-version}</version>
+				<scope>test</scope>
+			</dependency>
+			<dependency>
+				<groupId>com.carrotsearch</groupId>
+				<artifactId>junit-benchmarks</artifactId>
+				<version>${junit-benchmarks-dependency-version}</version>
+				<scope>test</scope>
+				<classifier>sources</classifier>
+			</dependency>
+			<!-- Lanterna: Java library for creating text-based terminal GUIs -->
+			<dependency>
+				<groupId>com.googlecode.lanterna</groupId>
+				<artifactId>lanterna</artifactId>
+				<version>${lanterna-dependency-version}</version>
+			</dependency>
+			<dependency>
+				<groupId>com.googlecode.lanterna</groupId>
+				<artifactId>lanterna</artifactId>
+				<version>${lanterna-dependency-version}</version>
+				<classifier>sources</classifier>
+			</dependency>
+			<!-- Apache Log4j 1.2 -->
+			<dependency>
+				<groupId>log4j</groupId>
+				<artifactId>log4j</artifactId>
+				<version>${log4j-dependency-version}</version>
+			</dependency>
+			<dependency>
+				<groupId>log4j</groupId>
+				<artifactId>log4j</artifactId>
+				<version>${log4j-dependency-version}</version>
+				<classifier>sources</classifier>
+			</dependency>
+			<!-- Project Lombok -->
+			<dependency>
+				<groupId>org.projectlombok</groupId>
+				<artifactId>lombok</artifactId>
+				<version>${lombok-dependency-version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.projectlombok</groupId>
+				<artifactId>lombok</artifactId>
+				<version>${lombok-dependency-version}</version>
+				<classifier>sources</classifier>
+			</dependency>
+			<!-- Mock objects library for java -->
+			<dependency>
+				<groupId>org.mockito</groupId>
+				<artifactId>mockito-all</artifactId>
+				<version>${mockito-all-dependency-version}</version>
+				<scope>test</scope>
+			</dependency>
+			<dependency>
+				<groupId>org.mockito</groupId>
+				<artifactId>mockito-all</artifactId>
+				<version>${mockito-all-dependency-version}</version>
+				<scope>test</scope>
+				<classifier>sources</classifier>
+			</dependency>
+			<!-- MessagePack for Java -->
+			<dependency>
+				<groupId>org.msgpack</groupId>
+				<artifactId>msgpack</artifactId>
+				<version>${msgpack-dependency-version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.msgpack</groupId>
+				<artifactId>msgpack</artifactId>
+				<version>${msgpack-dependency-version}</version>
+				<classifier>sources</classifier>
+			</dependency>
+			<!-- OSGi Compendium Release 5, Interfaces and Classes for use in compiling bundles. -->
+			<dependency>
+				<groupId>org.osgi</groupId>
+				<artifactId>org.osgi.compendium</artifactId>
+				<version>${org.osgi.compendium-dependency-version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.osgi</groupId>
+				<artifactId>org.osgi.compendium</artifactId>
+				<version>${org.osgi.compendium-dependency-version}</version>
+				<classifier>sources</classifier>
+			</dependency>
+			<!-- OSGi Service Platform Release 5 Version 5.0, Core Interfaces and Classes for use in compiling bundles. -->
+			<dependency>
+				<groupId>org.osgi</groupId>
+				<artifactId>org.osgi.core</artifactId>
+				<version>${org.osgi.core-dependency-version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.osgi</groupId>
+				<artifactId>org.osgi.core</artifactId>
+				<version>${org.osgi.core-dependency-version}</version>
+				<classifier>sources</classifier>
+			</dependency>
+			<!-- A Persistent Java Collections Library -->
+			<dependency>
+				<groupId>org.pcollections</groupId>
+				<artifactId>pcollections</artifactId>
+				<version>${pcollections-dependency-version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.pcollections</groupId>
+				<artifactId>pcollections</artifactId>
+				<version>${pcollections-dependency-version}</version>
+				<classifier>sources</classifier>
+			</dependency>
+			<!-- Dox is a high speed, small footprint parser for extracting class/interface/method definitions -->
+			<dependency>
+				<groupId>com.thoughtworks.qdox</groupId>
+				<artifactId>qdox</artifactId>
+				<version>${qdox-dependency-version}</version>
+			</dependency>
+			<dependency>
+				<groupId>com.thoughtworks.qdox</groupId>
+				<artifactId>qdox</artifactId>
+				<version>${qdox-dependency-version}</version>
+				<classifier>sources</classifier>
+			</dependency>
+			<!-- Java runtime metadata analysis -->
+			<dependency>
+				<groupId>org.reflections</groupId>
+				<artifactId>reflections</artifactId>
+				<version>${reflections-dependency-version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.reflections</groupId>
+				<artifactId>reflections</artifactId>
+				<version>${reflections-dependency-version}</version>
+				<classifier>sources</classifier>
+			</dependency>
+			<!-- TestNG is a testing framework. -->
+			<dependency>
+				<groupId>org.testng</groupId>
+				<artifactId>testng</artifactId>
+				<version>${testng-dependency-version}</version>
+				<scope>test</scope>
+			</dependency>
+			<dependency>
+				<groupId>org.testng</groupId>
+				<artifactId>testng</artifactId>
+				<version>${testng-dependency-version}</version>
+				<scope>test</scope>
+				<classifier>sources</classifier>
+			</dependency>
+			<!-- ThreeTen backport -->
+			<dependency>
+				<groupId>org.threeten</groupId>
+				<artifactId>threetenbp</artifactId>
+				<version>${threetenbp-dependency-version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.threeten</groupId>
+				<artifactId>threetenbp</artifactId>
+				<version>${threetenbp-dependency-version}</version>
+				<classifier>sources</classifier>
 			</dependency>
 
 		</dependencies>
